@@ -1,0 +1,39 @@
+{
+  "name": "grunt-ng2-inline",
+  "description": "Inline angular2 templates and styles with Grunt and angular2-inline-template-style",
+  "version": "0.1.0",
+  "homepage": "https://github.com/m-architek/grunt-ng2-inline",
+  "author": {
+    "name": "Marcin Architek",
+    "email": "marcin.architek@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/m-architek/grunt-ng2-inline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/m-architek/grunt-ng2-inline/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/m-architek/grunt-ng2-inline/blob/master/LICENSE-MIT"
+    }
+  ],
+  "scripts": {
+    "preinstall": "npm prune",
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "angular2-inline-template-style": "0.2.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-nodeunit": "1.0.0",
+    "grunt": "1.0.0"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
