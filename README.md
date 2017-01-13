@@ -54,6 +54,13 @@ Default value: `false`
 
 Set base folder for templates and stylesheet relative to source file.
 
+#### options.overwriteSrc
+Type: `Boolean`  
+Default value: `false`
+
+When this option is set to `true`, the source files will be replaced with files having inline templates and css.
+`dest` provided with this task will be ignored.
+
 ### Usage Examples
 
 ```js
@@ -69,6 +76,25 @@ grunt.initConfig({
                 base: 'src/assets',
                 compress: true,
                 relative: false
+            }
+        }
+    }
+});
+```
+
+```js
+grunt.initConfig({
+    ng2_inline: {
+        default: {
+            expand: true,
+            nonull: true,
+            cwd: 'src',
+            src: 'app/**/*.ts',
+            options: {
+                base: 'src/assets',
+                compress: true,
+                relative: false,
+                overwriteSrc: true
             }
         }
     }

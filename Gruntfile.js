@@ -68,9 +68,45 @@ module.exports = function(grunt) {
                 options: {
                     compress: true
                 }
+            },
+            "no-destination": {
+                expand: true,
+                nonull: true,
+                cwd: 'tmp/no-destination',
+                src: 'component.ts',
+                options: {
+                    overwriteSrc: true
+                }
+            },
+            "multi-src": {
+                expand: true,
+                nonull: true,
+                cwd: 'tmp/multi-src',
+                src: '*.ts',
+                options: {
+                    overwriteSrc: true
+                }
             }
         },
 
+        copy: {
+            "no-destination": {
+                src: [
+                    'test/fixtures/component.ts',
+                    'test/fixtures/component.html',
+                    'test/fixtures/component.css',
+                ],
+                flatten: true,
+                expand: true,
+                dest: 'tmp/no-destination/'
+            },
+            "multi-src": {
+                src: 'test/fixtures/*',
+                flatten: true,
+                expand: true,
+                dest: 'tmp/multi-src/'
+            }
+        },
         // Unit tests.
         nodeunit: {
             tests: ['test/*_test.js']
@@ -85,10 +121,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'ng2_inline', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'copy', 'ng2_inline', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);

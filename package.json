@@ -28,10 +28,11 @@
     "angular2-inline-template-style": "0.2.1"
   },
   "devDependencies": {
-    "grunt-contrib-jshint": "1.0.0",
+    "grunt": "1.0.0",
     "grunt-contrib-clean": "1.0.0",
-    "grunt-contrib-nodeunit": "1.0.0",
-    "grunt": "1.0.0"
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-contrib-nodeunit": "1.0.0"
   },
   "keywords": [
     "gruntplugin"
