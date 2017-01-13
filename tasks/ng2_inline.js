@@ -8,9 +8,9 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-    grunt.registerMultiTask('ng2_inline', 'Inline angular2 templates and styles with Grunt and angular2-inline-template-style', function() {
+    grunt.registerMultiTask('ng2_inline', 'Inline angular2 templates and styles with Grunt and angular2-inline-template-style', function () {
 
         var ng2Inline = require('angular2-inline-template-style'),
             path = require('path');
@@ -19,18 +19,19 @@ module.exports = function(grunt) {
         var options = this.options({
             base: this.data.cwd,
             compress: false,
-            relative: false
+            relative: false,
+            overwriteSrc: false
         });
         grunt.log.debug('Options: ', options);
 
 
         // Iterate over all specified file groups.
-        this.files.forEach(function(file) {
+        this.files.forEach(function (file) {
 
             file.src
                 .filter(
                     // Fail on invalid source files (if nonull was set).
-                    function(filepath) {
+                    function (filepath) {
                         if (!grunt.file.exists(filepath)) {
                             grunt.fail.warn('Source file "' + filepath + '" not found.');
                             return false;
@@ -40,18 +41,25 @@ module.exports = function(grunt) {
                     }
                 )
                 .forEach(
-                    function(filepath) {
+                    function (filepath) {
                         grunt.log.debug('Process file: ' + filepath);
-                        
+
                         // Read source file.
                         var content = grunt.file.read(filepath);
-                        
+
                         // Do inline!
                         content = ng2Inline(content, options, path.dirname(filepath));
-                        
-                        // Write the destination file.
-                        grunt.log.debug('Write to: ' + file.dest);
-                        grunt.file.write(file.dest, content);
+
+                        if (!options.overwriteSrc) {
+                            // Write the destination file.
+                            grunt.log.debug('Write to: ' + file.dest);
+                            grunt.file.write(file.dest, content);
+
+                        } else {
+                            //If a destination file is not specified, this will overrite the
+                            //original file that had templateUrl with the one having inline template.
+                            grunt.file.write(filepath, content);
+                        }
                     }
                 );
         });
