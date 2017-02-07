@@ -25,7 +25,7 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "angular2-inline-template-style": "0.2.1"
+    "angular2-inline-template-style": "1.0.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "1.0.0",
