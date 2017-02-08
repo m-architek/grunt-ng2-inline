@@ -1,7 +1,7 @@
 {
   "name": "grunt-ng2-inline",
   "description": "Inline angular2 templates and styles with Grunt and angular2-inline-template-style",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "homepage": "https://github.com/m-architek/grunt-ng2-inline",
   "author": {
     "name": "Marcin Architek",
